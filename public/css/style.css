@@ -1,0 +1,191 @@
+     
+body{
+    height: 100vh; 
+    background-color: #EEEFE1;
+}
+.body-content{
+    height: 100vh;
+    
+}
+.sidebar{
+    background-color: #EEEFE1;
+    padding-top: 20px;
+    height: 100vh;
+    
+}
+.sidebar a{
+    color: #1C1A1B;
+    text-decoration: none;
+    display: block;
+    padding: 12px;
+    padding-left: 2rem;
+}
+
+.sidebar a:hover{
+     color: #EEEFE1;
+     background-color: #e26266;
+}
+
+.kepala{
+    width: 3rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
+.logo{
+    background-color: #1C1A1B;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 80%;
+}
+
+.isi{
+    height: 100vh;
+    
+}
+.col-lg-7{
+    padding-top: 2rem;
+    padding-left: 2rem;
+    background-color: #EEEFE1;
+}
+.col-lg-5{
+    padding-top: 2rem;
+    padding-left: 2rem;
+    background-color: #fdfcfb;
+}
+.judul{
+    font-size: 35px;
+    font-family: marmelad;
+}
+.desk{
+    width: 65%;
+}
+.next{
+    border-radius: 30px;    
+    background-color: #1C1A1B;
+    color: #EEEFE1;
+}
+.ke1{
+    background-color: gray;
+    width: 96px;
+    height: 128px;
+    border-radius: 5%;
+    margin-right: 10px;
+}
+.books{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+.book-ju{
+    font-size: 25px;
+    font-family: marmelad;
+}
+.cat-ju{
+    font-size: 20px;
+    font-family: marmelad;
+}
+.cat1{
+    background-color: 50% #fdfcfb;
+    width: 85px;
+    height: 100px;
+    border-radius: 2px;
+}
+.log-cat{
+    background-color: lightgrey;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    position: relative;
+    top: 15px;
+    left: 28px;
+
+}
+.t-cat{
+    color: gray;
+    position: relative;
+    top: 23px;
+    left: 20px;
+}
+.c-book-sin{
+    background-color: gray;
+    width: 400px;
+    height: 220px;
+    border-radius: 10px ;
+    position: absolute;
+    right: 30%; 
+
+}
+.ket-sin{
+    margin-left: 9rem;
+    margin-top: 1rem;
+}
+.title{
+    font-size: 27px;
+    width: 40%;
+    font-family: marmelad;
+
+}
+.sin{
+    font-size: 15px;
+    width: 75%;
+    font-family: marmelad;
+
+}
+.menu{
+    margin-top: 2rem;
+    font-size: 20px;
+    font-family: marmelad;
+}
+.isi-m-1{
+    background-color: lightgray;
+    width: 100px;
+    height: 80px;
+    margin-right: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+}
+.isi-m-2{
+    background-color: lightgray;
+    width: 210px;
+    height: 80px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.isi-m-2-1{
+    width: 40%;
+    margin-left: 1rem;
+}
+.isi-m-2-2{
+    width: 40%;
+}
+.comentar{
+    margin-top: 3rem;
+}
+.com-g{
+    background-color: gray;
+    width: 250px;
+    height: 150px;
+    border-radius: 5px ;
+    position: absolute;
+    right: 4%; 
+}
+.title-com{
+    font-size: 20px;
+    font-family: marmelad;
+    width: 40%;
+    margin-left: 2rem;
+}
+.com-isi{
+    border-color: black;
+    background: rgb(238, 238, 238);
+    width: 150px;
+    height: 140px;
+    border-radius: 3px ;
+    position: relative;
+    margin-top: 18px;
+    margin-right: 4px;
+    padding: 1rem;
+}
+.com-isi-isi{
+    font-size: 11px;
+    font-family: marmelad;
+}
