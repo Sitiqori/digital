@@ -1,24 +1,24 @@
 @extends('layouts/app')
 @section('hal', 'Books')
 @section('title', 'Books')
-@section('content') 
-    
+@section('content')
+
 <div class="container-fluid">
 
-             
+
      <!-- DataTales Example -->
      <div class="card shadow col-lg-12 mb-4 ">
         <div class="nav-item dropdown no-arrow  ">
             <a class="nav-link dropdown  d-flex justify-content-start m-2" href="#" id="" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <button style="background-color: #EEEFE1" class="tambah btn btn-light mr-2"><i class="fa fa-plus-square mr-2" ></i>Create</button>
-           </a> 
-           <div class="col-lg-12  d-flex justify-content-end "> 
+           </a>
+           <div class="col-lg-12  d-flex justify-content-end ">
                <a style="background-color: #E26266" href="" class="btn btn-danger mr-2"><i class="fa fa-trash mr-2" ></i>Destroy</a>
                <a   class="tambah btn btn-dark"><i class="fas fa-download fa-sm text-white-50 mr-2" ></i>Generate Report</a>
            </div>
 
-           
+
            <div class="mt3">
                @if (session('status'))
                    <div class="alert alert-success">
@@ -35,8 +35,8 @@
                             @endforeach
                         </ul>
                     </div>
-                
-                    
+
+
                 @endif
            </div>
 
@@ -65,6 +65,15 @@
                         <input type="datetime" class="form-control" id="tahun_terbit" placeholder="2022" name="tahun_terbit" required>
                     </a>
                     <a class="dropdown-item align-items-center" href="#">
+                        <label for="kategori_id">Category Book</label>
+                        <select name="kategori_id[]" id="category"  class=" form-control" >
+                            @foreach ($categories as $item)
+                                <option value="{{ $item->id }}">{{ $item->namakategori }}</option>
+                            @endforeach
+
+                        </select>
+                    </a>
+                    <a class="dropdown-item align-items-center" href="#">
                         <label for="sinopsis">Sinopsis</label>
                         <input class="form-control"  type="text" style="height: 4rem"  id="sinopsis" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, quibusdam quasi minima repellendus earum enim assumenda omnis saepe nobis beatae?" name="sinopsis" required>
                     </a>
@@ -80,7 +89,7 @@
                </div>
            </form>
        </div>
-         
+
          <div class="card-body">
              <div class="table-responsive">
                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -117,4 +126,7 @@
          </div>
      </div>
  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 @endsection

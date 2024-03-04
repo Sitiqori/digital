@@ -41,7 +41,7 @@ Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'authenticating']);
 Route::get('register', [AuthController::class, 'register']);
 Route::post('register', [AuthController::class, 'registerProcess']);
- 
+
 Route::get('logout', [AuthController::class, 'logout']);
 //admin+petugas
 Route::get('dashboard', [DashboardController::class, 'index']);
@@ -62,9 +62,9 @@ Route::put('category-update/{slug}', [CategoryController::class, 'update'])->nam
 Route::delete('category-delete/{slug}', [CategoryController::class, 'destroy'])->name('category.destroy');
 Route::get('deleted-category', [CategoryController::class, 'deleted'])->name('deleted-category');
 Route::get('category-restore/{slug}', [CategoryController::class, 'restore'])->name('category-restore');
-
-
  
+
+
 
 Route::get('a-user', [UserController::class, 'index']);
 

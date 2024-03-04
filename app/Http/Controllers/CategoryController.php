@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
- 
+
 class CategoryController extends Controller
 {
     public function index()
@@ -19,7 +19,8 @@ class CategoryController extends Controller
         $validated = $request->validate([
             'namakategori' => 'required|unique:kategoribuku',
         ]);
-        
+
+
         $category = Category::create($validated);
         return redirect('a-category')->with('status', 'Category Added Successfully');
     }
@@ -38,14 +39,14 @@ class CategoryController extends Controller
 
         // Generate slug from namakategori
         $newSlug = Str::slug($validated['namakategori']);
-        
+
         // Update category with new slug
         $category = Category::where('slug', $slug)->first();
         $category->update([
             'namakategori' => $validated['namakategori'],
             'slug' => $newSlug,
         ]);
-        
+
         return redirect('a-category')->with('status', 'Category Updated Successfully');
     }
 
@@ -74,6 +75,6 @@ class CategoryController extends Controller
     {
         $category = Category::withTrashed()->where('slug', $slug)->first();
         $category->restore();
-        return redirect('a-category')->with('status', 'Category Restored Successfully');    
+        return redirect('a-category')->with('status', 'Category Restored Successfully');
     }
 }

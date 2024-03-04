@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
- 
+
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class BookController extends Controller
 {
@@ -17,7 +19,8 @@ class BookController extends Controller
     public function abook()
     {
         $books = Book::all();
-        return view('a-book', ['books' => $books]);
+        $categories = Category::all();
+        return view('a-book', ['books' => $books, 'categories' => $categories]);
     }
 
     public function arating()
@@ -30,7 +33,7 @@ class BookController extends Controller
         $validated = $request->validate([
             'judul' => 'required|unique:buku',
         ]);
-        
+
         if ($request->file('image')){
             $extension = $request->file('image')->getClientOriginalExtension();
             $newName = $request->judul. '-' .now()->timestamp. '-.' .$extension;
@@ -39,6 +42,13 @@ class BookController extends Controller
         $request['cover'] =$newName;
         // $book = Book::create($validated);
         $book = Book::create($request->all());
+        $book->categories()->sync($request->categories);
         return redirect('a-book')->with('status', 'Book Added Successfully');
     }
+
+    public function kategoribuku(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 'kategoribuku_relasi', 'buku_id', 'kategori_id');
+    }
+
 }
