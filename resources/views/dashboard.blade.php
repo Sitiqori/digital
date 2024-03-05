@@ -3,6 +3,14 @@
 @section('title', 'Dashboard')
 @section('content')
     
+
+{{-- 
+    ga tau apa tpi kta rio itu token github Sitiqori Sqam04062006
+    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 
+--}}
+
+
+
 <div class="row">
      <!-- Earnings (Monthly) Card Example -->
      <div class="col-xl-3 col-md-6 mb-4">
