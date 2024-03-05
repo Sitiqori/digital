@@ -202,7 +202,7 @@
                                             </form>
                                         </div>
 
-                                   </td>
+                                   </td> 
                              </tr>
                          @endforeach
                      </tbody>
