@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Mar 2024 pada 08.41
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 8.1.6
+-- Generation Time: Mar 05, 2024 at 08:09 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,71 +24,67 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `buku`
+-- Table structure for table `buku`
 --
 
 CREATE TABLE `buku` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `penulis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `penerbit` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `judul` varchar(255) NOT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `penulis` varchar(255) NOT NULL,
+  `penerbit` varchar(255) NOT NULL,
   `tahun_terbit` year(4) NOT NULL,
-  `sinopsis` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'instock',
-  `cover` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sinopsis` text DEFAULT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'instock',
+  `cover` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `kategori_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `buku`
+-- Dumping data for table `buku`
 --
 
 INSERT INTO `buku` (`id`, `judul`, `slug`, `penulis`, `penerbit`, `tahun_terbit`, `sinopsis`, `status`, `cover`, `created_at`, `updated_at`, `kategori_id`) VALUES
-(4, 'The Deathly Hallows', 'the-deathly-hallows', 'Jk Rowling', 'Gramedia', 2005, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis saepe similique nesciunt quod nam optio alias eaque, explicabo consequuntur repellendus amet neque est, deserunt exercitationem minus. Facere repellat assumenda fugiat!', 'instock', 'The Deathly Hallows-1708652967-jpg', '2024-02-22 18:49:28', '2024-02-22 18:49:28', NULL),
-(5, 'The Goblet of Fire', 'the-goblet-of-fire', 'Jk Rowling', 'Gramedia', 2003, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis saepe similique nesciunt quod nam optio alias eaque, explicabo consequuntur repellendus amet neque est, deserunt exercitationem minus. Facere repellat assumenda fugiat!', 'instock', 'The Goblet of Fire-1708653519-jpg', '2024-02-22 18:58:39', '2024-02-22 18:58:39', NULL),
-(6, 'ancuki ancika', 'ancuki-ancika', 'Jk Rowling', 'Gramedia', 2003, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis saepe similique nesciunt quod nam optio alias eaque, explicabo consequuntur repellendus amet neque est, deserunt exercitationem minus. Facere repellat assumenda fugiat!', 'instock', '1708654235-jpeg', '2024-02-22 19:10:36', '2024-02-22 19:10:36', NULL),
-(7, 'Ancuki', 'ancuki', 'Jk Rowling', 'Gramedia', 2003, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis saepe similique nesciunt quod nam optio alias eaque, explicabo consequuntur repellendus amet neque est, deserunt exercitationem minus. Facere repellat assumenda fugiat!', 'instock', '1708654300-.jpeg', '2024-02-22 19:11:40', '2024-02-22 19:11:40', NULL),
-(8, 'Ancuku Ancika Ancaki', 'ancuku-ancika-ancaki', 'Jk Rowling', 'Gramedia', 2003, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis saepe similique nesciunt quod nam optio alias eaque, explicabo consequuntur repellendus amet neque est, deserunt exercitationem minus. Facere repellat assumenda fugiat!', 'instock', 'Ancuku Ancika Ancaki-1708654446-.jfif', '2024-02-22 19:14:06', '2024-02-22 19:14:06', NULL),
-(9, 'cuyung', 'cuyung', 'Jk Rowling', 'Gramedia', 2003, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis saepe similique nesciunt quod nam optio alias eaque, explicabo consequuntur repellendus amet neque est, deserunt exercitationem minus. Facere repellat assumenda fugiat!', 'instock', 'cuyung-1708654502-.jpeg', '2024-02-22 19:15:02', '2024-02-22 19:15:02', NULL),
-(10, 'agenda kelas', 'agenda-kelas', 'wakasek', 'smk1', 2024, 'lorem lorem lorem', 'instock', 'agenda kelas-1709519293-.jpg', '2024-03-03 19:28:13', '2024-03-03 19:28:13', NULL),
-(11, 'bla bla', 'bla-bla', 'bla', 'bla bla', 2020, 'sggfdb sgfdgfdg dfg g', 'instock', 'bla bla-1709537944-.jpg', '2024-03-04 00:39:05', '2024-03-04 00:39:05', NULL);
+(4, 'The Deathly Hallows', 'the-deathly-hallows', 'Jk Rowling', 'Gramedia', '2005', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis saepe similique nesciunt quod nam optio alias eaque, explicabo consequuntur repellendus amet neque est, deserunt exercitationem minus. Facere repellat assumenda fugiat!', 'instock', 'The Deathly Hallows-1708652967-jpg', '2024-02-22 18:49:28', '2024-02-22 18:49:28', NULL),
+(5, 'The Goblet of Fire', 'the-goblet-of-fire', 'Jk Rowling', 'Gramedia', '2003', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis saepe similique nesciunt quod nam optio alias eaque, explicabo consequuntur repellendus amet neque est, deserunt exercitationem minus. Facere repellat assumenda fugiat!', 'instock', 'The Goblet of Fire-1708653519-jpg', '2024-02-22 18:58:39', '2024-02-22 18:58:39', NULL),
+(9, 'cuyung', 'cuyung', 'Jk Rowling', 'Gramedia', '2003', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis saepe similique nesciunt quod nam optio alias eaque, explicabo consequuntur repellendus amet neque est, deserunt exercitationem minus. Facere repellat assumenda fugiat!', 'instock', 'cuyung-1708654502-.jpeg', '2024-02-22 19:15:02', '2024-02-22 19:15:02', NULL),
+(14, 'dasda', 'agenda', 'dsaadasd', 'sadasdads', '2001', 'sadasdasdasaa', 'instock', NULL, '2024-03-04 19:33:26', '2024-03-05 00:06:06', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategoribuku`
+-- Table structure for table `kategoribuku`
 --
 
 CREATE TABLE `kategoribuku` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `namakategori` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `namakategori` varchar(255) NOT NULL,
+  `slug` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `kategoribuku`
+-- Dumping data for table `kategoribuku`
 --
 
 INSERT INTO `kategoribuku` (`id`, `namakategori`, `slug`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -101,7 +97,7 @@ INSERT INTO `kategoribuku` (`id`, `namakategori`, `slug`, `created_at`, `updated
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategoribuku_relasi`
+-- Table structure for table `kategoribuku_relasi`
 --
 
 CREATE TABLE `kategoribuku_relasi` (
@@ -112,10 +108,17 @@ CREATE TABLE `kategoribuku_relasi` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `kategoribuku_relasi`
+--
+
+INSERT INTO `kategoribuku_relasi` (`id`, `buku_id`, `kategori_id`, `created_at`, `updated_at`) VALUES
+(3, 14, 1, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `koleksipribadi`
+-- Table structure for table `koleksipribadi`
 --
 
 CREATE TABLE `koleksipribadi` (
@@ -129,17 +132,17 @@ CREATE TABLE `koleksipribadi` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -164,19 +167,19 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `password_reset_tokens`
+-- Table structure for table `password_reset_tokens`
 --
 
 CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `peminjaman`
+-- Table structure for table `peminjaman`
 --
 
 CREATE TABLE `peminjaman` (
@@ -186,7 +189,7 @@ CREATE TABLE `peminjaman` (
   `TanggalPeminjaman` date NOT NULL,
   `TanggalPengembalian` date NOT NULL,
   `TanggalHarusDikembalikan` date NOT NULL,
-  `StatusPeminjaman` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `StatusPeminjaman` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -194,16 +197,16 @@ CREATE TABLE `peminjaman` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -213,18 +216,18 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(100) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
@@ -235,14 +238,14 @@ INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ulasan_buku`
+-- Table structure for table `ulasan_buku`
 --
 
 CREATE TABLE `ulasan_buku` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `buku_id` bigint(20) UNSIGNED NOT NULL,
-  `ulasan` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ulasan` text NOT NULL,
   `rating` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -251,26 +254,26 @@ CREATE TABLE `ulasan_buku` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `nama_lengkap` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_lengkap` varchar(255) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `role_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `email_verified_at`, `nama_lengkap`, `alamat`, `status`, `remember_token`, `created_at`, `updated_at`, `role_id`) VALUES
@@ -284,27 +287,26 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `email_verified_at`,
 --
 
 --
--- Indeks untuk tabel `buku`
+-- Indexes for table `buku`
 --
 ALTER TABLE `buku`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `buku_kategori_id_foreign` (`kategori_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indeks untuk tabel `kategoribuku`
+-- Indexes for table `kategoribuku`
 --
 ALTER TABLE `kategoribuku`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `kategoribuku_relasi`
+-- Indexes for table `kategoribuku_relasi`
 --
 ALTER TABLE `kategoribuku_relasi`
   ADD PRIMARY KEY (`id`),
@@ -312,7 +314,7 @@ ALTER TABLE `kategoribuku_relasi`
   ADD KEY `kategoribuku_relasi_kategori_id_foreign` (`kategori_id`);
 
 --
--- Indeks untuk tabel `koleksipribadi`
+-- Indexes for table `koleksipribadi`
 --
 ALTER TABLE `koleksipribadi`
   ADD PRIMARY KEY (`id`),
@@ -320,19 +322,19 @@ ALTER TABLE `koleksipribadi`
   ADD KEY `koleksipribadi_buku_id_foreign` (`buku_id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `password_reset_tokens`
+-- Indexes for table `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indeks untuk tabel `peminjaman`
+-- Indexes for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
   ADD PRIMARY KEY (`id`),
@@ -340,7 +342,7 @@ ALTER TABLE `peminjaman`
   ADD KEY `peminjaman_buku_id_foreign` (`buku_id`);
 
 --
--- Indeks untuk tabel `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -348,13 +350,13 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indeks untuk tabel `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `ulasan_buku`
+-- Indexes for table `ulasan_buku`
 --
 ALTER TABLE `ulasan_buku`
   ADD PRIMARY KEY (`id`),
@@ -362,7 +364,7 @@ ALTER TABLE `ulasan_buku`
   ADD KEY `ulasan_buku_buku_id_foreign` (`buku_id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -370,115 +372,115 @@ ALTER TABLE `users`
   ADD KEY `users_role_id_foreign` (`role_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `buku`
+-- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT untuk tabel `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `kategoribuku`
+-- AUTO_INCREMENT for table `kategoribuku`
 --
 ALTER TABLE `kategoribuku`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `kategoribuku_relasi`
+-- AUTO_INCREMENT for table `kategoribuku_relasi`
 --
 ALTER TABLE `kategoribuku_relasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `koleksipribadi`
+-- AUTO_INCREMENT for table `koleksipribadi`
 --
 ALTER TABLE `koleksipribadi`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT untuk tabel `peminjaman`
+-- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `ulasan_buku`
+-- AUTO_INCREMENT for table `ulasan_buku`
 --
 ALTER TABLE `ulasan_buku`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `buku`
+-- Constraints for table `buku`
 --
 ALTER TABLE `buku`
   ADD CONSTRAINT `buku_kategori_id_foreign` FOREIGN KEY (`kategori_id`) REFERENCES `kategoribuku` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `kategoribuku_relasi`
+-- Constraints for table `kategoribuku_relasi`
 --
 ALTER TABLE `kategoribuku_relasi`
   ADD CONSTRAINT `kategoribuku_relasi_buku_id_foreign` FOREIGN KEY (`buku_id`) REFERENCES `buku` (`id`),
   ADD CONSTRAINT `kategoribuku_relasi_kategori_id_foreign` FOREIGN KEY (`kategori_id`) REFERENCES `kategoribuku` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `koleksipribadi`
+-- Constraints for table `koleksipribadi`
 --
 ALTER TABLE `koleksipribadi`
   ADD CONSTRAINT `koleksipribadi_buku_id_foreign` FOREIGN KEY (`buku_id`) REFERENCES `buku` (`id`),
   ADD CONSTRAINT `koleksipribadi_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `peminjaman`
+-- Constraints for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
   ADD CONSTRAINT `peminjaman_buku_id_foreign` FOREIGN KEY (`buku_id`) REFERENCES `buku` (`id`),
   ADD CONSTRAINT `peminjaman_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `ulasan_buku`
+-- Constraints for table `ulasan_buku`
 --
 ALTER TABLE `ulasan_buku`
   ADD CONSTRAINT `ulasan_buku_buku_id_foreign` FOREIGN KEY (`buku_id`) REFERENCES `buku` (`id`),
   ADD CONSTRAINT `ulasan_buku_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);

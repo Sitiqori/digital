@@ -49,9 +49,10 @@ Route::get('dashboard', [DashboardController::class, 'index']);
 Route::get('dashpetugas', [UserController::class, 'profile']);
 
 Route::get('a-book', [BookController::class, 'abook']);
-
 Route::get('abook-add', [BookController::class, 'add']);
 Route::post('abook-add', [BookController::class, 'store'])->name('abook.store');
+Route::get('abook-edit/{slug}', [BookController::class, 'edit']);
+Route::put('abook-update/{slug}', [BookController::class, 'update'])->name('abook.update');
 
 Route::get('a-category', [CategoryController::class, 'index']);
 Route::get('category-add', [CategoryController::class, 'add']);

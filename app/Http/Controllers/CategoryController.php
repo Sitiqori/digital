@@ -25,6 +25,11 @@ class CategoryController extends Controller
         return redirect('a-category')->with('status', 'Category Added Successfully');
     }
 
+
+
+
+
+    
     public function edit($slug)
     {
         $category = Category::where('slug', $slug)->first();
@@ -49,6 +54,11 @@ class CategoryController extends Controller
 
         return redirect('a-category')->with('status', 'Category Updated Successfully');
     }
+
+
+
+
+
 
     public function destroy($slug)
     {

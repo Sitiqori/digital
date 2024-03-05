@@ -66,11 +66,10 @@
                     </a>
                     <a class="dropdown-item align-items-center" href="#">
                         <label for="kategori_id">Category Book</label>
-                        <select name="kategori_id[]" id="category"  class=" form-control" >
+                        <select name="kategoribuku[]" id="category"  class=" form-control" >
                             @foreach ($categories as $item)
                                 <option value="{{ $item->id }}">{{ $item->namakategori }}</option>
                             @endforeach
-
                         </select>
                     </a>
                     <a class="dropdown-item align-items-center" href="#">
@@ -100,6 +99,7 @@
                          <th>Author</th>
                          <th>Publisher</th>
                          <th>Publication Year</th>
+                         <th>Category</th>
                          <th>Sinopsis</th>
                          <th>Status</th>
                          <th>Cover</th>
@@ -114,10 +114,95 @@
                                    <td>{{$item->penulis}}</td>
                                    <td>{{$item->penerbit}}</td>
                                    <td>{{$item->tahun_terbit}}</td>
+                                   <td>
+                                    @foreach ($item->kategoribuku as $category)
+                                        {{$category->namakategori}}
+                                    @endforeach
+                                   </td>
                                    <td>{{$item->sinopsis}}</td>
                                    <td>{{$item->status}}</td>
                                    <td>{{$item->cover}}</td>
-                                   <td>Action</td>
+                                   <td class="d-flex">
+                                       {{----------------------------------------------- edit ------------------------------------------------------}}
+                                        <div class="d-flex" href="/{{$item->slug}}">
+                                            <a class=" "  id="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                                <button  class=" btn btn-secondary mr-2" href="/{{$item->slug}}">Edit</button>
+                                            </a>
+                                            <!-- Dropdown - Messages -->
+                                            <form action=" {{ route('abook.update', $item->slug) }} " method="post" >
+                                                @csrf
+                                                @method('put')
+                                                <div class=" dropdown-menu shadow animated--grow-in p-3" aria-labelledby="messagesDropdown" href="a-book/{{$item->slug}}">
+                                                    <h6 class="dropdown-header" style="text-align: center">
+                                                        Edit Book Data
+                                                    </h6>
+                                                        <a class="dropdown-item align-items-center" href="#">
+                                                            <label for="judul">Title</label>
+                                                        <input type="text" class="form-control" id="judul" placeholder="The Prisoner of Azkaban" name="judul" required>
+                                                        </a>
+                                                        <a class="dropdown-item  align-items-center" href="#">
+                                                            <label for="penulis">Author</label>
+                                                            <input type="text" class="form-control" id="penulis" placeholder="Jk Rowling" name="penulis" required>
+                                                        </a>
+                                                        <a class="dropdown-item  align-items-center" href="#">
+                                                            <label for="penerbit">Publisher</label>
+                                                            <input type="text" class="form-control" id="penerbit" placeholder="Gramedia" name="penerbit" required>
+                                                        </a>
+                                                        <a class="dropdown-item align-items-center" href="#">
+                                                            <label for="tahun_terbit">Publication Year</label>
+                                                            <input type="datetime" class="form-control" id="tahun_terbit" placeholder="2022" name="tahun_terbit" required>
+                                                        </a>
+                                                        <a class="dropdown-item align-items-center" href="#">
+                                                            <label for="kategori_id">Category Book</label>
+                                                            <select name="kategoribuku[]" id="category"  class=" form-control" >
+                                                                @foreach ($categories as $item)
+                                                                    <option value="{{ $item->id }}">{{ $item->namakategori }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </a>
+                                                        <a class="dropdown-item align-items-center" href="#">
+                                                            <label for="sinopsis">Sinopsis</label>
+                                                            <input class="form-control"  type="text" style="height: 4rem"  id="sinopsis" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, quibusdam quasi minima repellendus earum enim assumenda omnis saepe nobis beatae?" name="sinopsis" required>
+                                                        </a>
+                                                        <a class="dropdown-item align-items-center" href="#">
+                                                            <label for="image">Image Book</label>
+                                                            <input type="file" class="form-control mb-1" id="cover" placeholder=" " name="image" >
+                                                        </a>
+                                                    <a class="dropdown-item d-flex align-items-center mb-2" href="#">
+                                                        <button type="submit" class="btn btn-secondary form-control">Update </button>
+                                                    </a>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                       {{----------------------------------------------- delete ------------------------------------------------------}}
+
+                                        <div class="d-flex" href="/{{$item->slug}}">
+                                            <a class=" "  id="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                                <button  class=" btn btn-danger mr-2" href="/{{$item->slug}}">Delete</button>
+                                            </a>
+                                            <!-- Dropdown - Messages -->
+                                            <form action="
+                                            {{-- {{ route('category.destroy', $item->slug) }} --}}
+                                            {{-- " method="post"  --}}"
+                                            >
+                                                @csrf
+                                                {{-- @method('DELETE') --}}
+                                                <div class=" dropdown-menu shadow animated--grow-in p-3" aria-labelledby="messagesDropdown" href="a-category/{{$item->slug}}">
+                                                    <h5 class="dropdown-header">
+                                                        Are You Sure Want to Delete this Book?
+                                                    </h5>
+                                                    <a class="dropdown-item d-flex align-items-center"  >
+                                                        
+                                                    </a>
+                                                    <a class="dropdown-item d-flex align-items-center mb-2" href="#" >
+                                                        <button  type="submit" class="btn btn-danger form-control" >Delete</button>
+                                                    </a>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                   </td>
                              </tr>
                          @endforeach
                      </tbody>

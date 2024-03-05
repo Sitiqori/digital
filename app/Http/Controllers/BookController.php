@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -30,25 +31,89 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $validated = $request->validate([
             'judul' => 'required|unique:buku',
         ]);
 
+        // $book = Book::create($validated);
         if ($request->file('image')){
             $extension = $request->file('image')->getClientOriginalExtension();
             $newName = $request->judul. '-' .now()->timestamp. '-.' .$extension;
             $request->file('image')->storeAs('cover', $newName);
         }
         $request['cover'] =$newName;
-        // $book = Book::create($validated);
         $book = Book::create($request->all());
-        $book->categories()->sync($request->categories);
+
+        // $book->categories()->sync($request->categories);
+        $book->kategoribuku()->sync($request->kategoribuku);
         return redirect('a-book')->with('status', 'Book Added Successfully');
     }
 
-    public function kategoribuku(): BelongsToMany
+
+    
+
+    public function edit($slug)
     {
-        return $this->belongsToMany(Category::class, 'kategoribuku_relasi', 'buku_id', 'kategori_id');
+        $books = Book::where('slug', $slug)->first();
+        return view('edit-abook', ['books' => $books]);
     }
+
+    public function update(Request $request, $slug)
+    {
+        $validated = $request->validate([
+            'judul' => 'required|unique:buku,judul,'.$slug.',slug',
+        ]);
+
+        // if ($request->file('image')){
+        //     $extension = $request->file('image')->getClientOriginalExtension();
+        //     $newName = $request->judul. '-' .now()->timestamp. '-.' .$extension;
+        //     $request->file('image')->storeAs('cover', $newName);
+        // }
+        
+        $newName = null;
+            if ($request->file('image')) {
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $newName = $request->judul. '-' .now()->timestamp. '-.' .$extension;
+                $request->file('image')->storeAs('cover', $newName);
+            }
+    
+        $request['cover'] = $newName;
+        $newSlug = Str::slug($validated['judul']);
+
+        $books = Book::where('slug', $slug)->first();
+        $books->update($request->all());
+        
+        if ($request->kategoribuku) {
+            $books->kategoribuku()->sync($request->kategoribuku);
+        }
+        
+        return redirect('a-book')->with('status', 'Book Updated Successfully');
+    }
+
+
+    // public function update(Request $request, $slug)
+    // {
+    //     $validated = $request->validate([
+    //         'judul' => 'required|unique:buku,judul,'.$slug.',slug',
+    //     ]);
+    //     if ($request->file('image')){
+    //         $extension = $request->file('image')->getClientOriginalExtension();
+    //         $newName = $request->judul. '-' .now()->timestamp. '-.' .$extension;
+    //         $request->file('image')->storeAs('cover', $newName);
+    //     }
+    //     $request['cover'] =$newName;
+    //     $newSlug = Str::slug($validated['judul']);
+
+        
+    //     $books = Book::where('slug', $slug)->first();
+    //     $books->update([$request->all()]);
+        
+    //     if ($request->kategoribuku) {
+    //         $book->kategoribuku()->sync($request->kategoribuku);
+    //     }
+        
+    //     return redirect('a-book')->with('status', 'Book Updated Successfully');
+    // }
 
 }

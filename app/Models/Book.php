@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Book extends Model
 {
@@ -18,7 +20,6 @@ class Book extends Model
     ];
 
     
-
     public function sluggable(): array
     {
         return [
@@ -26,5 +27,15 @@ class Book extends Model
                 'source' => 'judul'
             ]
         ];
+    }
+
+    /**
+     * The roles that belong to the Book
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function kategoribuku(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 'kategoribuku_relasi', 'buku_id', 'kategori_id');
     }
 }
